@@ -121,9 +121,6 @@ var run = function(){
     var drag = new DragCommand('dragstart', 'color');
     var drop = new DropCommand('drop', 'target');
     var dragover = new DragoverCommand('dragover', 'target');
-    console.log('drag', drag);
-    console.log('drop', drop);
-    console.log('dragover', dragover);
     mastermind.execute(drag);
     mastermind.execute(dragover);    
     mastermind.execute(drop);
