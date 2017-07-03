@@ -1,3 +1,5 @@
+var pattern = [];
+
 /**
  * @function Log Helper
  * @param {} msg
@@ -10,18 +12,6 @@ var log = (function(){
         show: function() { alert(log); log = ""}
     }
 })();
-
-// // Events
-// document.getElementById('target').addEventListener('drop', drop);
-// document.getElementById('target').addEventListener('dragover', dragover);
-// document.getElementById('target2').addEventListener('drop', drop);
-// document.getElementById('target2').addEventListener('dragover', dragover);
-
-
-
-/*-----------------------------------------------------
----------------------Command Test----------------------
------------------------------------------------------*/
 
 /**
  * @function drag
@@ -38,8 +28,16 @@ function drag(event) {
 function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
+    var target = event.target;
+    target.appendChild(document.getElementById(data));
     event.dataTransfer.clearData();
+
+    pattern = [];            
+    var targets = target.getElementsByTagName('p');
+    console.log(targets);
+    for(var i = 0; i < targets.length; i++) {
+        pattern.push(targets[i].id);
+    }
 }
 
 /**
@@ -119,9 +117,11 @@ var Mastermind = function() {
 var run = function(){
     var mastermind = new Mastermind();
     var drag = new DragCommand('dragstart', 'color');
+    var drag2 = new DragCommand('dragstart', 'color2');    
     var drop = new DropCommand('drop', 'target');
     var dragover = new DragoverCommand('dragover', 'target');
     mastermind.execute(drag);
+    mastermind.execute(drag2);
     mastermind.execute(dragover);    
     mastermind.execute(drop);
     //log.show();
