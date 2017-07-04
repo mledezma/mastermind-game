@@ -37,7 +37,6 @@ function drop(event) {
     var targets = target.getElementsByTagName('p');
     for(var i = 0; i < targets.length; i++) {
         pattern.push(targets[i].id);
-        console.log(pattern);
     }
 }
 
@@ -85,9 +84,12 @@ var Mastermind = function() {
 
     return {
         execute: function(command) {
-            commands.push(command.name);
-            command.execute(event);
-            log.add(commands[commands.length-1]);      
+            commands.push(command);
+            log.add(commands[commands.length-1].name);                  
+            commands.forEach(function(element){
+                element.execute(event);              
+                commands.pop();
+            });
         },
         getCommands: function() {
             return commands;
