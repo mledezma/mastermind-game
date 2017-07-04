@@ -4,7 +4,7 @@ var pattern = [];
  * @function Log Helper
  * @param {} msg
  */
-var log = (function(){
+var log = (function() {
     var log = " ";
 
     return {
@@ -32,11 +32,12 @@ function drop(event) {
     target.appendChild(document.getElementById(data));
     event.dataTransfer.clearData();
 
+    // Adds every new dropped element to the pattern array
     pattern = [];            
     var targets = target.getElementsByTagName('p');
-    console.log(targets);
     for(var i = 0; i < targets.length; i++) {
         pattern.push(targets[i].id);
+        console.log(pattern);
     }
 }
 
@@ -55,38 +56,25 @@ function dragover(event) {
  * @param {string} name - The name of the event listener
  * @param {DOMElement} target - DOM Element to aply the last param
  */
-var Command = function(execute, name, target) {
+var Command = function(execute, name) {
     this.execute = execute;
-    this.name = name;    
-    this.target = target;
+    this.name = name;
 };
 
 /**
  * @instance Command#DragCommand
  * @param {string} name - The name of the event listener
- * @param {DOMElement} target - DOM Element to aply the last param
  */
-var DragCommand = function(name, target){
-    return new Command(drag, name, target);
+var DragCommand = function(name) {
+    return new Command(drag, name);
 };
 
 /**
  * @instance Command#DropCommand
  * @param {string} name - The name of the event listener
- * @param {DOMElement} target - DOM Element to aply the last param
  */
-var DropCommand = function(name, target){
-    return new Command(drop, name, target);
-};
-
-//ToDo: Try to fusion Dragover and Drop command because both have the same target
-/**
- * @instance Command#DragoverCommand
- * @param {string} name - The name of the event listener
- * @param {DOMElement} target - DOM Element to aply the last param
- */
-var DragoverCommand = function(name, target){
-    return new Command(dragover, name, target);
+var DropCommand = function(name) {
+    return new Command(drop, name);
 };
 
 /**
@@ -98,11 +86,7 @@ var Mastermind = function() {
     return {
         execute: function(command) {
             commands.push(command.name);
-            // command.value = target; command.name.function --> EventListener
-            var input = document.getElementById(command.target);
-            input.addEventListener(command.name, function(event){
-                command.execute(event);
-            });
+            command.execute(event);
             log.add(commands[commands.length-1]);      
         },
         getCommands: function() {
@@ -114,15 +98,26 @@ var Mastermind = function() {
 /**
  * @function run
  */
-var run = function(){
+var run = function() {
+    // Variables
+    var color = document.getElementById('color');
+    var color2 = document.getElementById('color2');
+    var target = document.getElementById('target');
+
+    // Instances
     var mastermind = new Mastermind();
-    var drag = new DragCommand('dragstart', 'color');
-    var drag2 = new DragCommand('dragstart', 'color2');    
-    var drop = new DropCommand('drop', 'target');
-    var dragover = new DragoverCommand('dragover', 'target');
-    mastermind.execute(drag);
-    mastermind.execute(drag2);
-    mastermind.execute(dragover);    
-    mastermind.execute(drop);
-    //log.show();
+    var drag = new DragCommand('dragstart');   
+    var drop = new DropCommand('drop');
+
+    // Events
+    target.addEventListener('dragover', dragover);
+    color.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    color2.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    target.addEventListener('drop', function(){
+        mastermind.execute(drop);
+    });
 }();
