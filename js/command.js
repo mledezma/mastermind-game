@@ -38,6 +38,7 @@ function drop(event) {
     for(var i = 0; i < targets.length; i++) {
         pattern.push(targets[i].id);
     }
+    console.log(pattern);
 }
 
 /**
