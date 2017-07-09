@@ -33,11 +33,13 @@ function drop(event) {
     event.dataTransfer.clearData();
 
     // Adds every new dropped element to the pattern array
-    pattern = [];            
-    var targets = target.getElementsByTagName('p');
+    pattern = [];
+    var targets = target.getElementsByTagName('li');
     for(var i = 0; i < targets.length; i++) {
         pattern.push(targets[i].id);
     }
+
+    console.log(pattern);
 }
 
 /**
@@ -85,9 +87,9 @@ var Mastermind = function() {
     return {
         execute: function(command) {
             commands.push(command);
-            log.add(commands[commands.length-1].name);                  
+            log.add(commands[commands.length-1].name);
             commands.forEach(function(element){
-                element.execute(event);              
+                element.execute(event);
                 commands.pop();
             });
         },
@@ -102,24 +104,53 @@ var Mastermind = function() {
  */
 var run = function() {
     // Variables
-    var color = document.getElementById('color');
-    var color2 = document.getElementById('color2');
+    var color = document.getElementById('red');
+    var color2 = document.getElementById('blue');
+    var color3 = document.getElementById('white');
+    var color4 = document.getElementById('black');
+    var color5 = document.getElementById('orange');
+    var color6 = document.getElementById('purple');
+    var color7 = document.getElementById('green');
+    var color8 = document.getElementById('yellow');
+
     var target = document.getElementById('target');
 
     // Instances
     var mastermind = new Mastermind();
-    var drag = new DragCommand('dragstart');   
+    var drag = new DragCommand('dragstart');
     var drop = new DropCommand('drop');
 
     // Events
     target.addEventListener('dragover', dragover);
+
     color.addEventListener('dragstart', function(){
         mastermind.execute(drag);
     });
     color2.addEventListener('dragstart', function(){
         mastermind.execute(drag);
     });
+    color3.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    color4.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    color5.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    color6.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    color7.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+    color8.addEventListener('dragstart', function(){
+        mastermind.execute(drag);
+    });
+
     target.addEventListener('drop', function(){
         mastermind.execute(drop);
     });
+
+    console.log(pattern);
 }();
