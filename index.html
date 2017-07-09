@@ -7,10 +7,24 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <div class="square" id="target">Drop Zone</div>       
-        <p id="color" class="circle" draggable="true"></p>
-        <p id="color2" class="circle" draggable="true"></p>
+        <div class="table">
+          <div class="square" id="target"></div>
+        </div>
+
+        <div class="colors">
+          <ul>
+            <li id="red" class="circle red" draggable="true"></li>
+            <li id="blue" class="circle blue" draggable="true"></li>
+            <li id="white" class="circle white" draggable="true"></li>
+            <li id="black" class="circle black" draggable="true"></li>
+            <li id="orange" class="circle orange" draggable="true"></li>
+            <li id="purple" class="circle purple" draggable="true"></li>
+            <li id="green" class="circle green" draggable="true"></li>
+            <li id="yellow" class="circle yellow" draggable="true"></li>
+          </ul>
+        </div>
         <!-- Scripts -->
-        <script src="js/command.js"></script>        
+        <script src="js/views/command.js"></script>
+        <script src="js/model/pattern.js"></script>
     </body>
 </html>
