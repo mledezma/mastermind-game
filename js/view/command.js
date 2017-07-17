@@ -38,10 +38,7 @@ function drop(event) {
     for(var i = 0; i < targets.length; i++) {
         pattern.push(targets[i].id);
     }
-<<<<<<< HEAD:js/views/command.js
 
-=======
->>>>>>> refs/remotes/origin/master:js/command.js
     console.log(pattern);
 }
 
@@ -155,5 +152,4 @@ var run = function() {
         mastermind.execute(drop);
     });
 
-    console.log(pattern);
 }();
