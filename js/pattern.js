@@ -1,3 +1,4 @@
+
 /**
  * @function Factory pattern
  */
@@ -7,6 +8,32 @@ function FactoryPattern() {
      * @constructor
      * @param {string} type - Type of level.
      */
+     /**
+      * Represents a level.
+      * @constructor
+      */
+
+     var Beginner = function () {
+         this.level = 1;
+         this.arrayColors =  ['red', 'blue', 'white', 'green'];
+     };
+     /**
+      * Represents a level.
+      * @constructor
+      */
+     var Intermediate = function () {
+         this.level = 2;
+         this.arrayColors = ['red', 'blue', 'white', 'green', 'black', 'yellow'];
+     };
+     /**
+      * Represents a level.
+      * @constructor
+      */
+     var Advanced = function () {
+         this.level = 3;
+         this.arrayColors = ['red', 'blue', 'white', 'green', 'black', 'yellow', 'orange', 'purple'];
+     };
+
     this.createPattern = function (type) {
         var pattern;
         //Chosee level of the game
@@ -49,41 +76,15 @@ function FactoryPattern() {
     }
 }
 
-/**
- * Represents a level.
- * @constructor
- */
-var Beginner = function () {
-    this.level = 1;
-    this.arrayColors =  ['red', 'blue', 'white', 'green'];
-};
-/**
- * Represents a level.
- * @constructor
- */
-var Intermediate = function () {
-    this.level = 2;
-    this.arrayColors = ['red', 'blue', 'white', 'green', 'black', 'yellow'];
-};
-/**
- * Represents a level.
- * @constructor
- */
-var Advanced = function () {
-    this.level = 3;
-    this.arrayColors = ['red', 'blue', 'white', 'green', 'black', 'yellow', 'orange', 'purple'];
-};
-
-
-/**
- * @function Init
- */
-
-function init() {
-  var factory = new FactoryPattern();
-  var newPattern = factory.createPattern("advanced");
-  var finalPattern = newPattern.create();
-  console.log(finalPattern);
-}
-
-init();
+// /**
+//  * @function Init
+//  */
+//
+// function init() {
+//   var factory = new FactoryPattern();
+//   var newPattern = factory.createPattern("advanced");
+//   var finalPattern = newPattern.create();
+//   console.log(finalPattern);
+// }
+//
+// init();
