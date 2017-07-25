@@ -29,7 +29,7 @@ ObserverList.prototype = {
     },
 
     check: function() {
-        var matchColor = 0;        
+        var matchColor = 0;
         var matchPos = 0;
         console.log('attempt', attempt);
         console.log('pattern', observerPattern);
@@ -40,7 +40,7 @@ ObserverList.prototype = {
                     matchColor +=1;
                     if(idx === idx2) {
                         console.log('and the position too :D :', idx);
-                        matchPos +=1;                        
+                        matchPos +=1;
                     }
                 }
             });
@@ -49,7 +49,7 @@ ObserverList.prototype = {
         console.log('You have ' + matchPos + ' matching positions');
         if(matchPos === observerPattern.length) {
             console.log('yey you won');
-        }  
+        }
     },
 }
 
@@ -65,21 +65,21 @@ function createAttempt() {
     }
 }
 
-/**
- * @function run
- */
-function run() {
-    // The subject is the attempt, and the observer is the constructed pattern(the one that the factory creates)
-    // When the user clicks the check button, triggers a function that notify(checks) various things between both 
-    // patterns(attempt and pattern) like 1. If the attempt color exists in the pattern. 2. If the attempt color
-    // position is the same in the pattern. If this happens with every color; the user wins
-    var observerAttempt = new ObserverList();
-    var btnCheck = document.getElementById('check');
-
-    observerAttempt.subscribe(observerPattern);
-
-    btnCheck.addEventListener('click', createAttempt);
-    btnCheck.addEventListener('click', observerAttempt.check);  
-}
-
-run();
+// /**
+//  * @function run
+//  */
+// function run() {
+//     // The subject is the attempt, and the observer is the constructed pattern(the one that the factory creates)
+//     // When the user clicks the check button, triggers a function that notify(checks) various things between both
+//     // patterns(attempt and pattern) like 1. If the attempt color exists in the pattern. 2. If the attempt color
+//     // position is the same in the pattern. If this happens with every color; the user wins
+//     var observerAttempt = new ObserverList();
+//     var btnCheck = document.getElementById('check');
+//
+//     observerAttempt.subscribe(observerPattern);
+//
+//     btnCheck.addEventListener('click', createAttempt);
+//     btnCheck.addEventListener('click', observerAttempt.check);
+// }
+//
+// run();
