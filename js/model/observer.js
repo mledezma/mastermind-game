@@ -7,50 +7,50 @@ var observerPattern = ['red', 'blue', 'yellow', 'white'];
  * @constructor
  */
 function ObserverList() {
-    this.handlers = []; //Observers
+  this.handlers = []; //Observers
 }
 
 /**
  * @function ObserverList
  */
 ObserverList.prototype = {
-    subscribe: function(fn) {
-        this.handlers.push(fn);
-    },
+  subscribe: function (fn) {
+    this.handlers.push(fn);
+  },
 
-    unsubscribe: function(fn) {
-        this.handlers = this.handlers.filter(
-            function(item) {
-                if(item !== fn) {
-                    return item;
-                }
-            }
-        );
-    },
-
-    check: function() {
-        var matchColor = 0;
-        var matchPos = 0;
-        console.log('attempt', attempt);
-        console.log('pattern', observerPattern);
-        attempt.forEach(function(color, idx) {
-            observerPattern.forEach(function(color2, idx2) {
-                if(color === color2) {
-                    console.log('yey a color matched:', color);
-                    matchColor +=1;
-                    if(idx === idx2) {
-                        console.log('and the position too :D :', idx);
-                        matchPos +=1;
-                    }
-                }
-            });
-        });
-        console.log('You have ' + matchColor + ' matching colors');
-        console.log('You have ' + matchPos + ' matching positions');
-        if(matchPos === observerPattern.length) {
-            console.log('yey you won');
+  unsubscribe: function (fn) {
+    this.handlers = this.handlers.filter(
+      function (item) {
+        if (item !== fn) {
+          return item;
         }
-    },
+      }
+    );
+  },
+
+  check: function () {
+    var matchColor = 0;
+    var matchPos = 0;
+    console.log('attempt', attempt);
+    console.log('pattern', observerPattern);
+    attempt.forEach(function (color, idx) {
+      observerPattern.forEach(function (color2, idx2) {
+        if (color === color2) {
+          console.log('yey a color matched:', color);
+          matchColor += 1;
+          if (idx === idx2) {
+            console.log('and the position too :D :', idx);
+            matchPos += 1;
+          }
+        }
+      });
+    });
+    console.log('You have ' + matchColor + ' matching colors');
+    console.log('You have ' + matchPos + ' matching positions');
+    if (matchPos === observerPattern.length) {
+      console.log('yey you won');
+    }
+  },
 }
 
 /**
@@ -58,11 +58,11 @@ ObserverList.prototype = {
  * @description Optional function, simulates the commands that creates an attempt
  */
 function createAttempt() {
-    attempt = [];
-    var targets = target.getElementsByTagName('li');
-    for(var i = 0; i < targets.length; i++) {
-        attempt.push(targets[i].id);
-    }
+  attempt = [];
+  var targets = target.getElementsByTagName('li');
+  for (var i = 0; i < targets.length; i++) {
+    attempt.push(targets[i].id);
+  }
 }
 
 // /**

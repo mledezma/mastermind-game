@@ -43,7 +43,7 @@ function FactoryPattern() {
             pattern = new Advanced();
         }
 
-        pattern.type = type;
+        pattern.type = type; // No se esta usando??
 
         //create new pattern based on level
         pattern.create = function () {

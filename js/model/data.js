@@ -3,24 +3,28 @@
  * @desc Creates a model MVC class
  */
 
-var game_data = (function(){
-
+var game_data = (function () {
+  // Deberia haber una variable a la cual despues de ejecutado el factory del machinePattern
+  // se pueda acceder al valor del patron de la maquina
+  var machinePatternTest = []; // Only for testing
+  
   /**
    * Represents a pattern.
    * @constructor
    * @param {string} type - Type of level.
    */
-  var machinePattern = function(type) {
+  var machinePattern = function (type) {
     var factory = new FactoryPattern();
     var newPattern = factory.createPattern(type);
     var finalPattern = newPattern.create();
+    machinePatternTest = finalPattern; // Only for testing
   }
 
   /**
    * Represents a user pattern.
    * @constructor
    */
-  var userPattern = function(){
+  var userPattern = function () {
     //Se queda en el view?
 
   }
@@ -30,7 +34,7 @@ var game_data = (function(){
    * @function
    * @param {array} observerPattern
    */
-  var matchPatterns = function(observerPattern){
+  var matchPatterns = function (observerPattern) {
     var observerAttempt = new ObserverList();
     observerAttempt.subscribe(observerPattern);
   }
@@ -40,7 +44,7 @@ var game_data = (function(){
    * @function
    * @param {array} observerPattern
    */
-  var attempts = function(){
+  var attempts = function () {
     //
   }
 
@@ -48,7 +52,8 @@ var game_data = (function(){
     machinePattern: machinePattern,
     userPattern: userPattern,
     matchPatterns: matchPatterns,
-    attempt: attempt
+    attempt: attempts,
+    showMachinePattern: function() {return machinePatternTest}, // Only for testing
   }
 
 })();
