@@ -1,0 +1,25 @@
+// Normalize
+// ==========================================================================
+// Add the correct display in IE 9-.
+audio,
+video {
+  display: inline-block;
+}
+
+// Add the correct display in iOS 4-7.
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers:
+// https://github.com/h5bp/html5-boilerplate/issues/440
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}

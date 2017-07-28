@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div class="opacity" id="opacity"></div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Nunito:300,300i,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+      var arr=['article','aside','footer','header','nav','section','figcaption','figure','main','template'];
+      for(var i=0;i<arr.length;i++) document.createElement(arr[i]);
+    </script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="wrapper">
+      <img class="logo" src="img/logo.png" alt="Mastermind-logo">
+      <img class="btn-instructions" src="img/instructions.png" alt="instructions" id="btnInstruction">
+      <div class="modal-instructions" id="modalInstruction">
+        <div class="instructions">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci reprehenderit error distinctio, ipsum atque delectus placeat. Reiciendis vel aperiam est, aspernatur illo nam sint fuga molestiae, ducimus dolores perferendis omnis?
+          </p>
+        </div>
+      </div>
+      
+    </header>
+    <main>      
+      <div class="intro wrapper">
+        <h1 class="white-word">
+          MASTERMIND
+        </h1>
+        <form class="white-word" action="">  
+          <label for="level">difficulty</label>      
+          <select name="level" id="level">
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>  
+          </select>
+        </form>
+        <div class="btn btn--principal btn--principal__intro">
+          Start
+        </div>
+      </div>
+    </main>
+    <script src="js/instructions.js"></script>
+  </body>
+</html>

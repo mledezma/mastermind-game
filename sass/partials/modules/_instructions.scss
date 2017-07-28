@@ -1,0 +1,29 @@
+.opacity {
+  background: rgba(0,0,0,.7); 
+  display:none;
+  height: 100%;
+  position: fixed;
+  width: 100%; 
+  z-index: 11; 
+}
+
+.modal-instructions {
+  display:none;
+  height: 100%;
+  left: 50%;      
+  position: fixed;
+  overflow: auto;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);      
+  z-index: 12;
+}
+
+.instructions {
+	background-color: #FFF;
+	border: 3px solid #2d67b1;
+	margin-top: 40%;	
+	padding: 10%;
+	width: 100%;
+}

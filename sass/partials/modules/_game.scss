@@ -1,0 +1,29 @@
+.table {
+	@include micro-clearfix;
+	width: 800px;
+	margin: 0 auto;
+}
+
+.table-game {
+	margin: 0 auto;
+	width: 60%;
+	padding: 0 0 0 $space-x-large;
+}
+
+.color-options {
+
+}
+
+.empy-pattern {
+		width: 50px;
+}
+
+.empy-check {
+		width: 20px;
+		padding: 2px;
+}
+
+.color-options {
+	border-top: 2px solid #000;	
+	padding-top: $space-medium;	
+}
