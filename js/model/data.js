@@ -6,27 +6,28 @@
 var game_data = (function () {
   // Deberia haber una variable a la cual despues de ejecutado el factory del machinePattern
   // se pueda acceder al valor del patron de la maquina
-  var machinePatternTest = []; // Only for testing
-  
+  var machinePattern = []; // Only for testing
+  var userPattern = [];
+
   /**
    * Represents a pattern.
    * @constructor
    * @param {string} type - Type of level.
    */
-  var machinePattern = function (type) {
+  var createMachinePattern = function (type) {
     var factory = new FactoryPattern();
     var newPattern = factory.createPattern(type);
     var finalPattern = newPattern.create();
-    machinePatternTest = finalPattern; // Only for testing
+    machinePattern = finalPattern; // Only for testing
   }
 
   /**
    * Represents a user pattern.
-   * @constructor
+   * @function
+   * @param {array} finalPattern
    */
-  var userPattern = function () {
-    //Se queda en el view?
-
+  var insertUserPattern = function (finalPattern) {
+      userPattern = finalPattern;
   }
 
   /**
@@ -40,20 +41,26 @@ var game_data = (function () {
   }
 
   /**
-   *Counts attempts
+   *Data to change color pegs for each attempt
    * @function
-   * @param {array} observerPattern
+   * @return {object} messages
    */
-  var attempts = function () {
-    //
+  var changePegs = function(){
+    var messages = {
+      right: '../img/right-peg.png',
+      wrong: '../img/wrong-peg.png'
+    }
+
+    return messages;
   }
 
+
   return {
-    machinePattern: machinePattern,
+    createMachinePattern: createMachinePattern,
     userPattern: userPattern,
     matchPatterns: matchPatterns,
-    attempt: attempts,
-    showMachinePattern: function() {return machinePatternTest}, // Only for testing
+    showMachinePattern: function() {return machinePattern},
+    changePegs: changePegs
   }
 
 })();
