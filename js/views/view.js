@@ -26,13 +26,6 @@ var game_ui = (function () {
     var target = event.target;
     target.appendChild(document.getElementById(data));
     event.dataTransfer.clearData();
-
-    // Adds every new dropped element to the pattern array
-    pattern = [];
-    var targets = target.getElementsByTagName('li');
-    for (var i = 0; i < targets.length; i++) {
-      pattern.push(targets[i].id);
-    }
   }
 
   /**
@@ -40,9 +33,6 @@ var game_ui = (function () {
    * @param {string} event
    */
   function dragover(event, machinePattern, target) {
-    // Si la cantidad de elementos dentro del contenedor es igual a la cantidad
-    // de elementos que se dio con antelacion a la hora de crear el patron de la maquina
-    // no deje que se metan mas elementos --> Por medio del view
     var userPattern = [];
     var targets = target.getElementsByTagName('li');       
     for (var i = 0; i < targets.length; i++) {
@@ -51,6 +41,21 @@ var game_ui = (function () {
     if (userPattern.length !== machinePattern) {
       event.preventDefault();
     }
+  }
+
+  /**
+   * @function createUserPattern
+   * @param {*} target
+   * @return {array} userPattern
+   */
+  //ToDo pasar a comando
+  function createUserPattern(target) {
+    var pattern = [];
+    var targets = target.getElementsByTagName('li');
+    for (var i = 0; i < targets.length; i++) {
+      pattern.push(targets[i].id);
+    }
+    return pattern;   
   }
 
   /**
@@ -106,5 +111,6 @@ var game_ui = (function () {
     DragCommand: DragCommand,
     DropCommand: DropCommand,
     dragover: dragover,
+    createUserPattern: createUserPattern,
   }
 }())

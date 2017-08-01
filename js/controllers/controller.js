@@ -2,10 +2,13 @@ function controller(game_view, game_model) {
   var game_ui = game_view;
   var game_data = game_model;
   
+
   // Inits
-  game_data.machinePattern('beginner');
-  var machinePattern = game_data.showMachinePattern(); // Machine Pattern  
-  console.log(machinePattern); // Muestra el patron creado
+  game_data.createMachinePattern('beginner');
+  var machinePattern = game_data.getMachinePattern(); // Machine Pattern
+
+  // Inits Observer
+  game_data.initObserver(machinePattern);
 
   // Variables
   var pattern = [];
@@ -18,13 +21,14 @@ function controller(game_view, game_model) {
   var color7 = document.getElementById('green');
   var color8 = document.getElementById('yellow');
   var target = document.getElementById('target');
+  var btnCheck = document.getElementById('checkPatterns');
 
   // Instances
   var mastermind = new game_ui.Mastermind();
   var drag = new game_ui.DragCommand('dragstart');
   var drop = new game_ui.DropCommand('drop');
 
-  // Events
+  // Events View
   target.addEventListener('dragover', function() {
     game_ui.dragover(event, machinePattern.length, target);
   });
@@ -52,10 +56,16 @@ function controller(game_view, game_model) {
   color8.addEventListener('dragstart', function () {
     mastermind.execute(drag);
   });
-
   target.addEventListener('drop', function () {
     mastermind.execute(drop);
   });
+  btnCheck.addEventListener('click', function() {
+    var userPattern = game_ui.createUserPattern(target);
+    // game_data.insertUserPattern(userPattern);
+    // game_data.getUserPattern(); //only testing
+
+    game_data.check(userPattern);
+  })
 };
 
 controller(game_ui, game_data);

@@ -6,7 +6,7 @@
 var game_data = (function () {
   // Deberia haber una variable a la cual despues de ejecutado el factory del machinePattern
   // se pueda acceder al valor del patron de la maquina
-  var machinePattern = []; // Only for testing
+  var machinePattern = [];
   var userPattern = [];
 
   /**
@@ -18,7 +18,7 @@ var game_data = (function () {
     var factory = new FactoryPattern();
     var newPattern = factory.createPattern(type);
     var finalPattern = newPattern.create();
-    machinePattern = finalPattern; // Only for testing
+    machinePattern = finalPattern;
   }
 
   /**
@@ -31,20 +31,29 @@ var game_data = (function () {
   }
 
   /**
-   *Matchs patterns
+   * Inits patterns observer
    * @function
-   * @param {array} observerPattern
+   * @param {array} userPattern
+   * @param {array} machinePattern
    */
-  var matchPatterns = function (observerPattern) {
-    var observerAttempt = new ObserverList();
-    observerAttempt.subscribe(observerPattern);
+  var initObserver = function () {
+    observePatterns = new ObserverList();
+    observePatterns.subscribe(machinePattern);
+  }
+
+  /** 
+   * Checks patterns
+  */
+  var checkPattern = function(userPattern) {
+    observePatterns.check(userPattern);
   }
 
   /**
-   *Data to change color pegs for each attempt
+   * Data to change color pegs for each attempt
    * @function
    * @return {object} messages
    */
+  // Clases de css, observer
   var changePegs = function(){
     var messages = {
       right: '../img/right-peg.png',
@@ -57,10 +66,12 @@ var game_data = (function () {
 
   return {
     createMachinePattern: createMachinePattern,
-    userPattern: userPattern,
-    matchPatterns: matchPatterns,
-    showMachinePattern: function() {return machinePattern},
-    changePegs: changePegs
+    insertUserPattern: insertUserPattern,
+    initObserver: initObserver,
+    getMachinePattern: function() {return machinePattern},
+    changePegs: changePegs,
+    check: checkPattern,
+    getUserPattern: function() {console.log(userPattern)} //Only testing,
   }
 
 })();

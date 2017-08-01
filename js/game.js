@@ -1,6 +1,5 @@
 /**
  * @function Game Init the game
- * @param {*}
  */
 
 function Game() {
