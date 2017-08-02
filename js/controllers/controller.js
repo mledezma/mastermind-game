@@ -10,7 +10,7 @@ function controller(game_view, game_model) {
   // Inits Observer
   game_data.initObserver(machinePattern);
 
-  // Variables
+  // Variables View
   var pattern = [];
   var color = document.getElementById('red');
   var color2 = document.getElementById('blue');
@@ -32,6 +32,8 @@ function controller(game_view, game_model) {
   target.addEventListener('dragover', function() {
     game_ui.dragover(event, machinePattern.length, target);
   });
+  // game_ui.dragstart([color], callback);
+  // Array donde se ejecutan estas variables
   color.addEventListener('dragstart', function () {
     mastermind.execute(drag);
   });
