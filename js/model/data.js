@@ -4,8 +4,6 @@
  */
 
 var game_data = (function () {
-  // Deberia haber una variable a la cual despues de ejecutado el factory del machinePattern
-  // se pueda acceder al valor del patron de la maquina
   var machinePattern = [];
   var userPattern = [];
 
@@ -71,7 +69,7 @@ var game_data = (function () {
     getMachinePattern: function() {return machinePattern},
     changePegs: changePegs,
     check: checkPattern,
-    getUserPattern: function() {console.log(userPattern)} //Only testing,
+    getUserPattern: function() {console.log('Data-User Pattern',userPattern)} //Only testing,
   }
 
 })();

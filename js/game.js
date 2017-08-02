@@ -2,8 +2,11 @@
  * @function Game Init the game
  */
 
-function Game() {
-  var model = new data(); //model
-  var view = new view(); //view
-  var controller = new controller(); //controller
+function game() {
+  // Convertir en constructors --> new
+  console.log('game_ui',game_ui);
+  console.log('game_data',game_data);
+  game_handlers(game_data, game_ui);
 }
+
+game();

@@ -2,12 +2,13 @@
  * @class 
  * @desc Creates a view MVC class
  */
+
 var game_ui = (function () {
   /**
    * @function drag
    * @param {string} event
    */
-  function drag(event) {
+  this.drag = function(event) {
     event.dataTransfer.setData("text/plain", event.target.id);
   }
 
@@ -106,11 +107,77 @@ var game_ui = (function () {
     }
   };
 
+  /**
+   * @function _execFunc 
+   * @param {*} eventListener
+   * @param {* || array} HTMLNode
+   * @param {*} callback
+   */
+  var _execFunc = function(eventListener, element, callback) {
+    if(Array.isArray(element)) {
+      element.forEach(function(el) {
+        if(el instanceof HTMLElement) {
+          document.getElementById(el.id).addEventListener(eventListener, function() {
+            callback();
+          });
+        } else {
+          console.log('Invalid Type of Element:', el + '(' + typeof(el) + ')');
+        }
+      });
+    } else if(element instanceof HTMLElement) {
+      document.getElementById(element.id).addEventListener(eventListener, function() {
+        callback();
+      });
+    } else {
+      console.log('Invalid Type of Element:', element + '(' + typeof(element) + ')');
+    }
+  }
+
+  /**
+   * @function execDrag 
+   * @param {* || array} HTMLNode
+   * @param {*} callback
+   */
+  var execDrag = function(element, callback) {
+    _execFunc('dragstart', element, callback);
+  };
+  
+  /**
+   * @function execDrop 
+   * @param {* || array} HTMLNode
+   * @param {*} callback
+   */
+  var execDrop = function(element, callback) {
+    _execFunc('drop', element, callback);
+  };
+
+  /**
+   * @function execClick 
+   * @param {* || array} HTMLNode
+   * @param {*} callback
+   */
+  var execClick = function(element, callback) {
+    _execFunc('click', element, callback);
+  };
+
+   /**
+   * @function execDragover 
+   * @param {* || array} HTMLNode
+   * @param {*} callback
+   */
+  var execDragover = function(element, callback) {
+    _execFunc('dragover', element, callback);
+  };
+
   return {
     Mastermind: Mastermind,
     DragCommand: DragCommand,
     DropCommand: DropCommand,
     dragover: dragover,
     createUserPattern: createUserPattern,
+    execDrag: execDrag,
+    execDrop: execDrop,
+    execClick: execClick,
+    execDragover: execDragover
   }
 }())

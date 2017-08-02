@@ -1,0 +1,50 @@
+.circle {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.square {
+    display: inline-block;
+    border: 1px solid #000;
+    height: 100px;
+    width: 400px;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.black {
+    background-color: black;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.white {
+    border: 1px solid #000;
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+}
