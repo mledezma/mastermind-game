@@ -5,20 +5,20 @@
 }
 
 .table-game {
-	margin: 0 auto;
-	width: 60%;
-	padding: 0 0 0 $space-x-large;
+	margin: 0 auto 30px auto;
+	width: 32%;
+	padding: 0;
 }
 
 .color-options {
 
 }
 
-.empy-pattern {
+.empty-pattern {
 		width: 50px;
 }
 
-.empy-check {
+.empty-check {
 		width: 20px;
 		padding: 2px;
 }
@@ -26,4 +26,8 @@
 .color-options {
 	border-top: 2px solid #000;	
 	padding-top: $space-medium;	
+}
+
+.clue {
+	display: block;
 }

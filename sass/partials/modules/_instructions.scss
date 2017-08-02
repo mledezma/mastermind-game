@@ -21,9 +21,11 @@
 }
 
 .instructions {
-	background-color: #FFF;
-	border: 3px solid #2d67b1;
-	margin-top: 40%;	
+	background-image: url("../img/instructions_bgi.png");
+  background-size: cover;
+	border: 3px solid #fff;
+  color: #fff;
+	margin-top: 20%;	
 	padding: 10%;
 	width: 100%;
 }

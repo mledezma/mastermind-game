@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div class="opacity" id="opacity"></div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Nunito:300,300i,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+    <script type="text/javascript">
+      var arr=['article','aside','footer','header','nav','section','figcaption','figure','main','template'];
+      for(var i=0;i<arr.length;i++) document.createElement(arr[i]);
+    </script>
+    <![endif]-->
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header class="wrapper">
+      <a href="index.html">
+        <img class="logo" src="img/logo.png" alt="Mastermind-logo">        
+      </a>
+      <img class="btn-instructions" src="img/instructions.png" alt="instructions" id="btnInstruction">
+      <div class="modal-instructions" id="modalInstruction">
+        <div class="instructions">
+          <p>
+            El juego genera un patrón y la misión es lograr adivinar mediante 10 intentos cual es ese patrón.  
+          </p>
+          <p>
+            Te brindaremos pistas, después de hacer "check" a pareceran fichas negras ( si el color de la fica está bien colocado) o blancas (si las fichas son del color correcto, pero mal colocadas).
+          </p>
+          <p>
+            ¡SUERTE!
+          </p>
+        </div>
+      </div>
+      
+    </header>
+    <main class="wrapper">
+      <h2 class="center-title">
+        MASTERMIND
+      </h2>
+      <div class="table">
+        <!--line pattern-->
+          <table class="table-game">
+            <tr>
+              <td><img alt="" src="img/empty-pattern.png" id="colot-pattern-1" class="empty-pattern"></td>
+              <td><img alt="" src="img/empty-pattern.png" id="colot-pattern-2" class="empty-pattern"></td>
+              <td><img alt="" src="img/empty-pattern.png" id="colot-pattern-3" class="empty-pattern"></td>
+              <td><img alt="" src="img/empty-pattern.png" id="colot-pattern-4" class="empty-pattern"></td>
+              <td>
+                <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png">
+                </span>
+                <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png">
+                </span>
+              </td>
+            </tr>            
+          </table>   
+        <!--pattern-->
+        <table class="table-game">
+          <tr>
+            <td><img alt="" src="img/option-1.png" id="colot-pattern-1" class="empty-pattern"></td>
+            <td><img alt="" src="img/option-2.png" id="colot-pattern-2" class="empty-pattern"></td>
+            <td><img alt="" src="img/option-3.png" id="colot-pattern-3" class="empty-pattern"></td>
+            <td><img alt="" src="img/option-4.png" id="colot-pattern-4" class="empty-pattern"></td>
+          </tr>
+          <tr>
+            <td><img alt="" src="img/option-5.png" id="colot-pattern-1" class="empty-pattern"></td>
+            <td><img alt="" src="img/option-6.png" id="colot-pattern-2" class="empty-pattern"></td>
+            <td><img alt="" src="img/option-7.png" id="colot-pattern-3" class="empty-pattern"></td>
+            <td><img alt="" src="img/option-8.png" id="colot-pattern-4" class="empty-pattern"></td>
+          </tr>           
+        </table>
+        <div class="check">
+          <a href="" class="btn btn--principal">
+          check
+          </a>
+        </div>
+      </div>
+    </main>
+    <script src="js/display(view).js"></script>
+  </body>
+</html>
