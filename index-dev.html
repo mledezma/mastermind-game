@@ -6,9 +6,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style-dev.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <div class="opacity" id="opacity"></div>
+  <img class="btn-instructions" src="img/instructions.png" alt="instructions" id="btnInstruction">
+  <div class="modal-instructions" id="modalInstruction">
+    <div class="instructions">
+      <p>
+        El juego genera un patrón y la misión es lograr adivinar mediante 10 intentos cual es ese patrón.
+      </p>
+      <p>
+        Te brindaremos pistas, después de hacer "check" a pareceran fichas negras ( si el color de la fica está bien colocado) o
+        blancas (si las fichas son del color correcto, pero mal colocadas).
+      </p>
+      <p>
+        ¡SUERTE!
+      </p>
+    </div>
+  </div>
   <div class="square" id="target"></div>
   <ul>
     <li id="red" class="circle red" draggable="true"></li>
@@ -18,10 +35,10 @@
     <li id="orange" class="circle orange" draggable="true"></li>
     <li id="purple" class="circle purple" draggable="true"></li>
     <li id="green" class="circle green" draggable="true">
-    <li id="yellow" class="circle yellow" draggable="true">
+      <li id="yellow" class="circle yellow" draggable="true">
   </ul>
   <a href="#" id="btnCheck">Check</a>
-  
+
   <!-- Scripts -->
   <script src="js/model/observer.js"></script>
   <script src="js/model/pattern.js"></script>
@@ -30,4 +47,5 @@
   <script src="js/controllers/controller.js"></script>
   <script src="js/game.js"></script>
 </body>
+
 </html>

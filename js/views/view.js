@@ -110,19 +110,27 @@ var game_ui = (function () {
   /**
    * @function _execFunc 
    * @param {*} eventListener
-   * @param {* || array} HTMLNode
+   * @param {* || array} string
    * @param {*} callback
    */
   var _execFunc = function(eventListener, element, callback) {
     if(Array.isArray(element)) {
       element.forEach(function(el) {
-        if(el instanceof HTMLElement) {
-          document.getElementById(el.id).addEventListener(eventListener, function() {
+        if(typeof(el) === 'string') {
+          document.getElementById(el).addEventListener(eventListener, function() {
+            callback();
+          });
+        } else if(el instanceof HTMLElement) {
+          document.getElementById(el).addEventListener(eventListener, function() {
             callback();
           });
         } else {
           console.log('Invalid Type of Element:', el + '(' + typeof(el) + ')');
         }
+      });
+    } else if(typeof(el) === 'string') {
+      document.getElementById(element).addEventListener(eventListener, function() {
+        callback();
       });
     } else if(element instanceof HTMLElement) {
       document.getElementById(element.id).addEventListener(eventListener, function() {

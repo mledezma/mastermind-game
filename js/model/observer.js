@@ -46,6 +46,7 @@ ObserverList.prototype = {
         });
       });
     });
+    // Switch for the classes display
     console.log('You have ' + matchColor + ' matching colors');
     console.log('You have ' + matchPos + ' matching positions');
     if (matchPos === currentHandler.length) {
