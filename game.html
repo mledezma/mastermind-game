@@ -9,6 +9,7 @@
   <title>Mastermind</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Nunito:300,300i,700" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link href="css/style-dev.css" rel="stylesheet">
   <!--[if lt IE 9]>
     <script type="text/javascript">
       var arr=['article','aside','footer','header','nav','section','figcaption','figure','main','template'];
@@ -21,7 +22,7 @@
 <body>
   <header class="wrapper">
     <a href="index.html">
-        <img class="logo" src="img/logo.png" alt="Mastermind-logo">        
+        <img class="logo" src="img/logo.png" alt="Mastermind-logo">
       </a>
     <img class="btn-instructions" src="img/instructions.png" alt="instructions" id="btnInstruction">
     <div class="modal-instructions" id="modalInstruction">
@@ -44,45 +45,58 @@
     <h2 class="center-title">
       MASTERMIND
     </h2>
-    <div class="table">
-      <!--line pattern-->
-      <table class="table-game">
-        <tr id="target">
-          <td><img alt="" src="img/empty-pattern.png" class="empty-pattern"></td>
-          <td><img alt="" src="img/empty-pattern.png" class="empty-pattern"></td>
-          <td><img alt="" src="img/empty-pattern.png" class="empty-pattern"></td>
-          <td><img alt="" src="img/empty-pattern.png" class="empty-pattern"></td>
-          <td>
-            <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png">
-                </span>
-            <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png">
-                </span>
-          </td>
-        </tr>
-      </table>
-      <!--pattern-->
-      <table class="table-game">
-        <tr>
-          <td><img alt="" src="img/option-1.png" id="color-pattern-1" class="empty-pattern"></td>
-          <td><img alt="" src="img/option-2.png" id="color-pattern-2" class="empty-pattern"></td>
-          <td><img alt="" src="img/option-3.png" id="color-pattern-3" class="empty-pattern"></td>
-          <td><img alt="" src="img/option-4.png" id="color-pattern-4" class="empty-pattern"></td>
-        </tr>
-        <tr>
-          <td><img alt="" src="img/option-5.png" id="color-pattern-5" class="empty-pattern"></td>
-          <td><img alt="" src="img/option-6.png" id="color-pattern-6" class="empty-pattern"></td>
-          <td><img alt="" src="img/option-7.png" id="color-pattern-7" class="empty-pattern"></td>
-          <td><img alt="" src="img/option-8.png" id="color-pattern-8" class="empty-pattern"></td>
-        </tr>
-      </table>
+    <div class="game-ui">
+      <div class="">
+        <div>
+          <table>
+            <tr class="square" id="target">
+              <td>
+                <div class="circle gray"></div>
+              </td>
+              <td>
+                <div class="circle gray"></div>
+              </td>
+              <td>
+                <div class="circle gray"></div>
+              </td>
+              <td>
+                <div class="circle gray"></div>
+              </td>
+              <td>
+                <div class="clues">
+                  <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
+                  <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="colors">
+        <ul>
+          <li id="red" class="circle red" draggable="true"></li>
+          <li id="blue" class="circle blue" draggable="true"></li>
+          <li id="white" class="circle white" draggable="true"></li>
+          <li id="black" class="circle black" draggable="true"></li>
+          <li id="orange" class="circle orange" draggable="true"></li>
+          <li id="purple" class="circle purple" draggable="true"></li>
+          <li id="green" class="circle green" draggable="true"></li>
+          <li id="yellow" class="circle yellow" draggable="true"></li>
+        </ul>
+      </div>
       <div class="check">
-        <a href="" class="btn btn--principal" id="btnCheck">check</a>
+        <a href="#" id="btnCheck">Check</a>
       </div>
     </div>
   </main>
 
   <!-- Scripts -->
-  <script src="js/display(view).js"></script>
+  <script src="js/model/observer.js"></script>
+  <script src="js/model/pattern.js"></script>
+  <script src="js/model/data.js"></script>
+  <script src="js/views/ui.js"></script>
+  <script src="js/controllers/controller.js"></script>
+  <script src="js/game.js"></script>
 </body>
 
 </html>
