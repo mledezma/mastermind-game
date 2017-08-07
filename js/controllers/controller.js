@@ -7,11 +7,11 @@ var game_handlers = (function () {
   // Instance stores a reference to the Singleton
   var instance;
 
-  function init() {
+  function init(game_model,game_view) {
     // Inits
-    game_data.createMachinePattern('beginner');
-    var machinePattern = game_data.getMachinePattern();
-    game_data.initObserver(machinePattern);
+    game_model.createMachinePattern('beginner');
+    var machinePattern = game_model.getMachinePattern();
+    game_model.initObserver(machinePattern);
 
     // Variables
     var pattern = [];
@@ -22,31 +22,31 @@ var game_handlers = (function () {
     var opacity = document.getElementById('opacity');
 
     // Instances
-    var mastermind = new game_ui.Mastermind();
-    var drag = new game_ui.DragCommand('dragstart');
-    var drop = new game_ui.DropCommand('drop');
+    var mastermind = new game_view.Mastermind();
+    var drag = new game_view.DragCommand('dragstart');
+    var drop = new game_view.DropCommand('drop');
 
     // Events View
-    game_ui.execDragover(target, function () {
-      game_ui.dragover(event, machinePattern.length, target);
+    game_view.execDragover(target, function () {
+      game_view.dragover(event, machinePattern.length, target);
     });
-    game_ui.execDrag(['red', 'blue', 'white', 'black', 'orange', 'purple', 'green', 'yellow'], function () {
+    game_view.execDrag(['red', 'blue', 'white', 'black', 'orange', 'purple', 'green', 'yellow'], function () {
       mastermind.execute(drag);
     });
-    game_ui.execDrop(target, function () {
+    game_view.execDrop(target, function () {
       mastermind.execute(drop);
-    })
-    game_ui.execClick(btnCheck, function () {
-      var userPattern = game_ui.createUserPattern(target);
-      game_data.insertUserPattern(userPattern);
-      game_data.getUserPattern(); //only testing
-      game_data.check(userPattern);
     });
-    game_ui.execClick(btnInstruction, function () {
+    game_view.execClick(btnCheck, function () {
+      var userPattern = game_view.createUserPattern(target);
+      game_model.insertUserPattern(userPattern);
+      game_model.getUserPattern(); //only testing
+      game_model.check(userPattern);
+    });
+    game_view.execClick(btnInstruction, function () {
       modalInstruction.style.display = 'block';
       opacity.style.display = 'block';
     });
-    game_ui.execClick(opacity, function () {
+    game_view.execClick(opacity, function () {
       modalInstruction.style.display = 'none';
       opacity.style.display = 'none';
     });
@@ -55,9 +55,9 @@ var game_handlers = (function () {
   return {
     // Get the Singleton instance if one exists
     // or create one if it doesn't
-    getInstance: function (game_view, game_model) {
-      if (!instance) {
-        instance = init(game_view, game_model);
+    getInstance: function (game_model,game_view) {
+      if (!instance) {      
+        instance = init(game_model,game_view);       
       }
       return instance;
     }
