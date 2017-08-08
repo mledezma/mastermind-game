@@ -9,7 +9,6 @@
   <title>Mastermind</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Nunito:300,300i,700" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="css/style-dev.css" rel="stylesheet">
   <!--[if lt IE 9]>
     <script type="text/javascript">
       var arr=['article','aside','footer','header','nav','section','figcaption','figure','main','template'];
@@ -41,56 +40,46 @@
     </div>
 
   </header>
-  <main class="wrapper">
+  <section>
+    <div class="intro wrapper" id="intro">
+      <h1 class="white-word">
+        MASTERMIND
+      </h1>
+      <form class="white-word" action="" id="form">
+        <label for="level">Choose a LEVEL :D</label>
+        <select name="level" id="levels">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Hard</option>
+        </select>
+      </form>
+      <a class="btn btn--principal btn--principal__intro" id="start">Start</a>
+    </div>
+  </section>
+
+  <section class="wrapper hidden" id="game">
     <h2 class="center-title">
       MASTERMIND
     </h2>
     <div class="game-ui">
-      <div class="">
-        <div>
-          <table>
-            <tr class="square" id="target">
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="clues">
-                  <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
-                  <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
+      <table id="table"></table>
+
+      <div class="clues">
+        <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
+        <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
       </div>
+
       <div class="colors">
-        <ul>
-          <li id="red" class="circle red" draggable="true"></li>
-          <li id="blue" class="circle blue" draggable="true"></li>
-          <li id="white" class="circle white" draggable="true"></li>
-          <li id="black" class="circle black" draggable="true"></li>
-          <li id="orange" class="circle orange" draggable="true"></li>
-          <li id="purple" class="circle purple" draggable="true"></li>
-          <li id="green" class="circle green" draggable="true"></li>
-          <li id="yellow" class="circle yellow" draggable="true"></li>
-        </ul>
+        <ul id="colorOptions"></ul>
       </div>
       <div class="check">
-        <a href="#" id="btnCheck">Check</a>
+        <a href="#" class="btn btn--principal" id="btnCheck">Check</a>
       </div>
     </div>
-  </main>
+  </section>
 
   <!-- Scripts -->
+  <script src="js/main-test.js"></script>
   <script src="js/model/observer.js"></script>
   <script src="js/model/pattern.js"></script>
   <script src="js/model/data.js"></script>
