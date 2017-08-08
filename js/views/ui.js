@@ -1,9 +1,62 @@
 /**
- * @class 
+ * @class
  * @desc Creates a view MVC class
  */
 
 var game_ui = (function () {
+
+  /**
+   * Create a dinamic Rows of the table game.
+   * @function
+   */
+  function createRows(){
+    for(i=0; i<10; i++) {
+      table = document.getElementById('table');
+      row = document.createElement('tr');
+      row.setAttribute('class', 'row');
+      row.id = 'target' + i ;
+      table.appendChild(row);
+    }
+  }
+
+  /**
+   * Create circles of colorOptions
+   * @function
+   * @param {array}
+   */
+  function createCircles(colors){
+    colors.forEach(function(element) {
+      colorOptions = document.getElementById('colorOptions');
+      circle = document.createElement('li');
+      circle.id = element;
+      circle.classList.add('circle');
+      circle.setAttribute('draggable', true);
+      circle.classList.add(element);
+      colorOptions.appendChild(circle);
+    });
+  }
+
+  /**
+   * Create circles gray of the table where user will put a guess
+   * @function
+   * @param {array}
+   */
+  function createGrayCircles(level){
+    rows = document.getElementsByClassName('row');
+
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].id = 'target' + i ) {
+        level.forEach(function(element) {
+          td = document.createElement('td');
+          circle = document.createElement('div');
+          circle.classList.add('circle', 'gray');
+          td.appendChild(circle);
+          rows[i].appendChild(td);
+        });
+      }
+    }
+  }
+
   /**
    * @function drag
    * @param {string} event
@@ -17,12 +70,12 @@ var game_ui = (function () {
    * @param {string} event
    */
   function drop(event) {
-    event.preventDefault();  
+    event.preventDefault();
 
     // Prevents the appending of two li's
     if(event.target.tagName === 'LI') {
       return;
-    }  
+    }
     var data = event.dataTransfer.getData("text");
     var target = event.target;
     target.appendChild(document.getElementById(data));
@@ -35,7 +88,7 @@ var game_ui = (function () {
    */
   function dragover(event, machinePattern, target) {
     var userPattern = [];
-    var targets = target.getElementsByTagName('li');       
+    var targets = target.getElementsByTagName('li');
     for (var i = 0; i < targets.length; i++) {
       userPattern.push(targets[i].id);
     }
@@ -56,7 +109,7 @@ var game_ui = (function () {
     for (var i = 0; i < targets.length; i++) {
       pattern.push(targets[i].id);
     }
-    return pattern;   
+    return pattern;
   }
 
   /**
@@ -108,7 +161,7 @@ var game_ui = (function () {
   };
 
   /**
-   * @function _execFunc 
+   * @function _execFunc
    * @param {*} eventListener
    * @param {* || array} string
    * @param {*} callback
@@ -117,6 +170,9 @@ var game_ui = (function () {
     if(Array.isArray(element)) {
       element.forEach(function(el) {
         if(typeof(el) === 'string') {
+          // console.log(el);
+          var test = document.getElementById(el);
+          console.log(test);
           document.getElementById(el).addEventListener(eventListener, function() {
             callback();
           });
@@ -142,16 +198,16 @@ var game_ui = (function () {
   }
 
   /**
-   * @function execDrag 
+   * @function execDrag
    * @param {* || array} HTMLNode
    * @param {*} callback
    */
   var execDrag = function(element, callback) {
     _execFunc('dragstart', element, callback);
   };
-  
+
   /**
-   * @function execDrop 
+   * @function execDrop
    * @param {* || array} HTMLNode
    * @param {*} callback
    */
@@ -160,7 +216,7 @@ var game_ui = (function () {
   };
 
   /**
-   * @function execClick 
+   * @function execClick
    * @param {* || array} HTMLNode
    * @param {*} callback
    */
@@ -169,7 +225,7 @@ var game_ui = (function () {
   };
 
    /**
-   * @function execDragover 
+   * @function execDragover
    * @param {* || array} HTMLNode
    * @param {*} callback
    */
@@ -177,7 +233,21 @@ var game_ui = (function () {
     _execFunc('dragover', element, callback);
   };
 
+  /**
+  * @function Display game ui
+  */
+ var displayGame = function() {
+    var intro = document.getElementById('intro')
+    var gameWrapper = document.getElementById('game');
+    gameWrapper.classList.remove('hidden');
+    intro.className = 'hidden';
+ };
+
   return {
+    displayGame: displayGame,
+    createCircles: createCircles,
+    createRows: createRows,
+    createGrayCircles: createGrayCircles,
     Mastermind: Mastermind,
     DragCommand: DragCommand,
     DropCommand: DropCommand,
@@ -186,6 +256,6 @@ var game_ui = (function () {
     execDrag: execDrag,
     execDrop: execDrop,
     execClick: execClick,
-    execDragover: execDragover
+    execDragover: execDragover,
   }
 }())

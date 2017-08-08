@@ -6,6 +6,7 @@
 var game_data = (function () {
   var machinePattern = [];
   var userPattern = [];
+  var colorsArray;
 
   /**
    * Represents a pattern.
@@ -16,6 +17,7 @@ var game_data = (function () {
     var factory = new FactoryPattern();
     var newPattern = factory.createPattern(type);
     var finalPattern = newPattern.create();
+    colorsArray = finalPattern;
     machinePattern = finalPattern;
   }
 
@@ -39,7 +41,7 @@ var game_data = (function () {
     observePatterns.subscribe(machinePattern);
   }
 
-  /** 
+  /**
    * Checks patterns
   */
   var checkPattern = function(userPattern) {
@@ -62,11 +64,13 @@ var game_data = (function () {
   }
 
 
+
   return {
     createMachinePattern: createMachinePattern,
     insertUserPattern: insertUserPattern,
     initObserver: initObserver,
     getMachinePattern: function() {return machinePattern},
+    getArrayColors: function() {return colorsArray},
     changePegs: changePegs,
     check: checkPattern,
     getUserPattern: function() {console.log('Data-User Pattern',userPattern)} //Only testing,
