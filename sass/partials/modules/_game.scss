@@ -11,23 +11,39 @@
 }
 
 .color-options {
-
-}
-
-.empty-pattern {
-		width: 50px;
-}
-
-.empty-check {
-		width: 20px;
-		padding: 2px;
-}
-
-.color-options {
 	border-top: 2px solid #000;	
 	padding-top: $space-medium;	
 }
 
 .clue {
 	display: block;
+}
+
+#gameItems {
+	padding: 0;
+}
+
+.col-1of2 {
+	@include column_1of2;
+}
+
+.row {
+	display: block;
+	box-sizing: border-box;
+}
+
+.circle-sm {
+    border-radius: 50%;
+	height: 35px;
+	margin: 0 2px;
+    width: 35px;
+}
+
+.clue {
+	display: inline-block;
+}
+
+#clues {
+	margin: 0 auto;
+    width: 65%;
 }

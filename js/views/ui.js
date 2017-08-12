@@ -128,7 +128,7 @@ var game_ui = (function () {
           console.log('Invalid Type of Element:', el + '(' + typeof(el) + ')');
         }
       });
-    } else if(typeof(el) === 'string') {
+    } else if(typeof(element) === 'string') {
       document.getElementById(element).addEventListener(eventListener, function() {
         callback();
       });
@@ -177,6 +177,48 @@ var game_ui = (function () {
     _execFunc('dragover', element, callback);
   };
 
+  /**
+   * @function renderGame
+   * @param {array} pattern 
+   */
+  var renderGame = function(pattern) {
+    pattern.forEach(function(color) {
+      _renderColors(color);
+      _renderClues();
+      _renderTable();
+    })
+  };
+
+  /**
+   * @function _renderColors
+   * @param {array} color 
+   * @private
+   */
+  var _renderColors = function(color) {
+    var li = document.createElement('li');
+    li.id = color;
+    li.classList.add('circle', color);
+    li.setAttribute('draggable', true);
+    document.getElementById('gameItems').appendChild(li);
+  }
+
+  /**
+   * @function _renderClues
+   * @private
+   */
+  var _renderClues = function() {
+    var div = document.createElement('div');
+    div.classList.add('circle-sm','gray','clue');
+    document.getElementById('clues').appendChild(div);
+  }
+
+  /**
+   * @function _renderTable
+   */
+  var _renderTable = function() {
+
+  }
+
   return {
     Mastermind: Mastermind,
     DragCommand: DragCommand,
@@ -186,6 +228,7 @@ var game_ui = (function () {
     execDrag: execDrag,
     execDrop: execDrop,
     execClick: execClick,
-    execDragover: execDragover
+    execDragover: execDragover,
+    renderGame: renderGame,
   }
 }())

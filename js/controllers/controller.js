@@ -8,12 +8,8 @@ var game_handlers = (function () {
   var instance;
 
   function init(game_model,game_view) {
-    // Inits
-    game_model.createMachinePattern('beginner');
-    var machinePattern = game_model.getMachinePattern();
-    game_model.initObserver(machinePattern);
-
     // Variables
+    var machinePattern = [];
     var pattern = [];
     var target = document.getElementById('target');
     var btnCheck = document.getElementById('btnCheck');
@@ -29,9 +25,6 @@ var game_handlers = (function () {
     // Events View
     game_view.execDragover(target, function () {
       game_view.dragover(event, machinePattern.length, target);
-    });
-    game_view.execDrag(['red', 'blue', 'white', 'black', 'orange', 'purple', 'green', 'yellow'], function () {
-      mastermind.execute(drag);
     });
     game_view.execDrop(target, function () {
       mastermind.execute(drop);
@@ -49,6 +42,19 @@ var game_handlers = (function () {
     game_view.execClick(opacity, function () {
       modalInstruction.style.display = 'none';
       opacity.style.display = 'none';
+    });
+    game_view.execClick('startGame', function(){
+      var hidden = document.querySelector('.hidden');
+      var level = document.getElementById('level');      
+      hidden.classList.remove('hidden');
+      document.getElementById('introWrapper').classList.add('hidden');
+      game_model.createMachinePattern(level.value);
+      machinePattern = game_model.getMachinePattern();
+      game_model.initObserver(machinePattern);
+      game_view.renderGame(machinePattern);
+      game_view.execDrag(machinePattern, function () {
+        mastermind.execute(drag);
+      });
     });
   };
 

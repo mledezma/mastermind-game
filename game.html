@@ -22,8 +22,8 @@
 <body>
   <header class="wrapper">
     <a href="index.html">
-        <img class="logo" src="img/logo.png" alt="Mastermind-logo">
-      </a>
+      <img class="logo" src="img/logo.png" alt="Mastermind-logo">
+    </a>
     <img class="btn-instructions" src="img/instructions.png" alt="instructions" id="btnInstruction">
     <div class="modal-instructions" id="modalInstruction">
       <div class="instructions">
@@ -39,50 +39,66 @@
         </p>
       </div>
     </div>
-
   </header>
+
   <main class="wrapper">
-    <h2 class="center-title">
-      MASTERMIND
-    </h2>
-    <div class="game-ui">
-      <div class="">
-        <div>
-          <table>
-            <tr class="square" id="target">
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="circle gray"></div>
-              </td>
-              <td>
-                <div class="clues">
-                  <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
-                  <span class="clue"><img class="empty-check" alt="" src="img/empty-pattern.png"><img class="empty-check" alt="" src="img/empty-pattern.png"></span>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
+    <div class="intro wrapper" id="introWrapper">
+      <h1 class="white-word">
+        MASTERMIND
+      </h1>
+      <form class="white-word" action="" id="form">
+        <label for="level">Difficulty</label>
+        <select name="level" id="level">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+      </form>
+      <div class="btn btn--principal btn--principal__intro">
+        <a href="#" id="startGame">
+          Start
+        </a>
       </div>
-      <div class="colors">
-        <ul>
-          <li id="red" class="circle red" draggable="true"></li>
-          <li id="blue" class="circle blue" draggable="true"></li>
-          <li id="white" class="circle white" draggable="true"></li>
-          <li id="black" class="circle black" draggable="true"></li>
-          <li id="orange" class="circle orange" draggable="true"></li>
-          <li id="purple" class="circle purple" draggable="true"></li>
-          <li id="green" class="circle green" draggable="true"></li>
-          <li id="yellow" class="circle yellow" draggable="true"></li>
-        </ul>
+    </div>
+    <div class="game-ui hidden">
+      <h2 class="center-title">
+        MASTERMIND
+      </h2>
+      <div class="row">
+        <div class="col-1of2">
+          <div>
+            <div>
+              <table>
+                <tr class="square" id="target">
+                  <td>
+                    <div class="circle gray"></div>
+                  </td>
+                  <td>
+                    <div class="circle gray"></div>
+                  </td>
+                  <td>
+                    <div class="circle gray"></div>
+                  </td>
+                  <td>
+                    <div class="circle gray"></div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-1of2">
+          <div class="colors">
+            <ul id="gameItems">
+            </ul>
+          </div>
+          <div>
+            <div id="clues">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="check">
         <a href="#" id="btnCheck">Check</a>

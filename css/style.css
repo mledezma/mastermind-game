@@ -210,7 +210,7 @@ hr {
 .btn--principal {
   background-color: #1b98ca;
   font-family: "Montserrat", sans-serif; }
-  .btn--principal:hover {
+  .btn--principal a:hover {
     background-color: #2d67b1; }
 
 .btn--principal__intro {
@@ -282,19 +282,41 @@ hr {
   width: 32%;
   padding: 0; }
 
-.empty-pattern {
-  width: 50px; }
-
-.empty-check {
-  width: 20px;
-  padding: 2px; }
-
 .color-options {
   border-top: 2px solid #000;
   padding-top: 3rem; }
 
 .clue {
   display: block; }
+
+#gameItems {
+  padding: 0; }
+
+.col-1of2 {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 49%; }
+  .col-1of2 > div {
+    padding: 0 28%; }
+
+.row {
+  display: block;
+  box-sizing: border-box; }
+
+.circle-sm {
+  border-radius: 50%;
+  height: 35px;
+  margin: 0 2px;
+  width: 35px; }
+
+.clue {
+  display: inline-block; }
+
+#clues {
+  margin: 0 auto;
+  width: 65%; }
 
 .opacity {
   background: rgba(0, 0, 0, 0.7);
@@ -324,5 +346,8 @@ hr {
   margin-top: 20%;
   padding: 10%;
   width: 100%; }
+
+.hidden {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

@@ -34,3 +34,15 @@
         @content;
     }
 }
+
+@mixin column_1of2 {
+	box-sizing: border-box;
+	display: inline-block;
+    text-align: center;
+    vertical-align: top;
+	width: 49%;
+
+	&>div {
+		padding: 0 28%;
+	}
+}
