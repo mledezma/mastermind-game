@@ -9,6 +9,7 @@ var game_ui = (function () {
    * @param {string} event
    */
   this.drag = function(event) {
+    event.dataTransfer.clearData();
     event.dataTransfer.setData("text/plain", event.target.id);
   }
 
@@ -34,6 +35,9 @@ var game_ui = (function () {
    * @param {string} event
    */
   function dragover(event, machinePattern, target) {
+    if(target.id !== event.target.parentNode.parentNode.id) {
+      return;
+    }
     var userPattern = [];
     var targets = target.getElementsByTagName('li');       
     for (var i = 0; i < targets.length; i++) {
@@ -180,12 +184,20 @@ var game_ui = (function () {
   /**
    * @function renderGame
    * @param {array} pattern 
+   * @param {string} target 
+   * @param {boolean} more 
    */
-  var renderGame = function(pattern) {
+  var renderGame = function(pattern,target,more) {
+    var tr = document.createElement('tr');
+    tr.id = target;
+    var table = document.getElementById('masterTable')
+    table.appendChild(tr);
     pattern.forEach(function(color) {
-      _renderColors(color);
-      _renderClues();
-      _renderTable();
+      if(more) {
+        _renderColors(color);
+        _renderClues();
+      }
+      _renderTable(tr);
     })
   };
 
@@ -215,8 +227,57 @@ var game_ui = (function () {
   /**
    * @function _renderTable
    */
-  var _renderTable = function() {
+  var _renderTable = function(tr) {
+    var td = document.createElement('td');
+    var div = document.createElement('div');
+    div.classList.add('circle','gray');
+    td.appendChild(div);
+    tr.appendChild(td);
+  }
 
+  /**
+   * @function switchColors
+   * @param {*} lastColor 
+   */  
+  var switchColors = function(lastColor) {
+    var gameItems = document.getElementById('gameItems');
+    lastColor.forEach(function(color){
+      var colorEl = document.getElementById(color);
+      colorEl.removeAttribute('draggable');
+      colorEl.id = '';  
+    });
+    gameItems.innerHTML = '';
+    lastColor.forEach(function(color) {
+      var newColor = document.createElement('li');
+      newColor.id = color;
+      newColor.classList.add('circle', color);
+      newColor.setAttribute('draggable', true);
+      newColor.addEventListener('dragstart', this.drag)
+      gameItems.appendChild(newColor);
+    });
+  }
+
+  /**
+   * @function _shuffle
+   * @param {array} array 
+   */
+  var _shuffle = function (array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.]       
+      temporaryValue = array[currentIndex]; 
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    
+    return array;
   }
 
   return {
@@ -230,5 +291,6 @@ var game_ui = (function () {
     execClick: execClick,
     execDragover: execDragover,
     renderGame: renderGame,
+    switchColors: switchColors
   }
 }())

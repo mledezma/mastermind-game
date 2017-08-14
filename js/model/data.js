@@ -69,7 +69,6 @@ var game_data = (function () {
     getMachinePattern: function() {return machinePattern},
     changePegs: changePegs,
     check: checkPattern,
-    getUserPattern: function() {console.log('Data-User Pattern',userPattern)} //Only testing,
   }
 
 })();
