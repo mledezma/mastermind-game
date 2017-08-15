@@ -14,7 +14,7 @@ var game_handlers = (function () {
     var target = document.getElementById('target');
     var btnCheck = document.getElementById('btnCheck');
     var btnInstruction = document.getElementById('btnInstruction');
-    var modalInstruction = document.getElementById('modalWin');
+    var modalInstruction = document.getElementById('modalInstruction');
     var opacity = document.getElementById('opacity');
 
     // Instances
