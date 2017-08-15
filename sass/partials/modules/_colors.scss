@@ -1,0 +1,56 @@
+.circle {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.square {
+    display: inline-block;
+    border: 1px solid #000;
+    height: auto;
+    width: 100%;
+}
+
+.red {
+    background-color: #f0434b;
+}
+
+.blue {
+    background-color: #0098ca;
+}
+
+.black {
+    background-color: #000;
+}
+
+.orange {
+    background-color: #f17e39;
+}
+
+.purple {
+    background-color: #a522a0;
+}
+
+.green {
+    background-color: #75bcba;
+}
+
+.yellow {
+    background-color: #f8c129;
+}
+
+.white {
+    border: 1px solid #000;
+    background-color: #fff;
+}
+
+.gray {
+    background-color: gray;
+}
+
+
+li {
+    display: inline-block;
+    list-style: none;
+}

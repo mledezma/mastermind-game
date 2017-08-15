@@ -9,7 +9,6 @@
   <title>Mastermind</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Nunito:300,300i,700" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="css/style-dev.css" rel="stylesheet">
   <!--[if lt IE 9]>
     <script type="text/javascript">
       var arr=['article','aside','footer','header','nav','section','figcaption','figure','main','template'];
@@ -74,11 +73,11 @@
             <option value="advanced">Advanced</option>
           </select>
       </form>
-      <div class="btn btn--principal btn--principal__intro">
-        <a href="#" id="startGame">
-          Start
-        </a>
-      </div>
+      <a href="#" id="startGame">
+        <div class="btn btn--principal btn--principal__intro">
+            Start
+        </div>
+      </a>
     </div>
     <div class="game-ui hidden">
       <h2 class="center-title">
@@ -88,23 +87,7 @@
         <div class="col-1of2">
           <div>
             <div>
-              <table>
-                <tr class="square" id="target">
-                  <td>
-                    <div class="circle gray"></div>
-                  </td>
-                  <td>
-                    <div class="circle gray"></div>
-                  </td>
-                  <td>
-                    <div class="circle gray"></div>
-                  </td>
-                  <td>
-                    <div class="circle gray"></div>
-                  </td>
-                  <td>
-                  </td>
-                </tr>
+              <table id="masterTable">
               </table>
             </div>
           </div>
@@ -120,9 +103,10 @@
           </div>
         </div>
       </div>
-      <div class="check">
-        <a href="#" id="btnCheck">Check</a>
-      </div>
+          <div class="check">
+            <a href="#" id="btnCheck">Check
+            </a>
+          </div>
     </div>
   </main>
 
