@@ -7,7 +7,7 @@
   z-index: 11; 
 }
 
-.modal-instructions {
+.modal {
   display:none;
   height: 100%;
   left: 50%;      
@@ -20,12 +20,31 @@
   z-index: 12;
 }
 
-.instructions {
-	background-image: url("../img/instructions_bgi.png");
+.moda-dimention {
   background-size: cover;
 	border: 3px solid #fff;
   color: #fff;
 	margin-top: 20%;	
-	padding: 10%;
 	width: 100%;
+
+      h2 {
+        width: 400px;
+        color: #fff;
+      }
+}
+
+.modal-bgi-instructions {
+  background-image: url("../img/instructions_bgi.png");
+  padding: 10%;
+
+}
+
+.modal-bgi-win {
+  background-image: url("../img/win.jpg");
+  padding: 25%;
+}
+
+.modal-bgi-lose {
+  background-image: url("../img/lose.jpg");
+  padding: 25%;
 }
